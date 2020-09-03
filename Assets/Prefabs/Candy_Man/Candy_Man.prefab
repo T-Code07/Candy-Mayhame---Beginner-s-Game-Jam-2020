@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1796762646}
   m_Layer: 0
   m_Name: Candy_Man
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,6 +425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161437234680563223, guid: 80346d86f137e654bbd94e6da3a200d4,
+        type: 3}
+      propertyPath: destroyBulletTime
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80346d86f137e654bbd94e6da3a200d4, type: 3}

@@ -21,6 +21,8 @@ public class GunScript : MonoBehaviour
     {
         var random = new System.Random();
         GameObject newGumball = Instantiate(m_gumballList[random.Next(m_gumballList.Count)], m_shootPoint.transform.position, Quaternion.identity);
+
+        newGumball.tag = "Projectile";
         newGumball.AddComponent<Rigidbody>();
         newGumball.GetComponent<Rigidbody>().AddForce(m_shootPoint.transform.forward * m_bulletSpeed);
         newGumball.GetComponent<Rigidbody>().useGravity = false;
