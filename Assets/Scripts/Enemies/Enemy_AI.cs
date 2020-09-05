@@ -31,13 +31,22 @@ public class Enemy_AI : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, m_playerObject.transform.position);
         if(distanceToPlayer <= m_attackDistance)
         {
-         transform.LookAt(m_playerObject.transform.position);
+            m_Animator.SetTrigger("isRunning");
+            transform.LookAt(m_playerObject.transform.position);
            // transform.rotation = Quaternion.Slerp(transform.rotation, lookAt, m_rotationSpeed);
             m_navMeshAgent.SetDestination(m_playerObject.transform.position);
+            
 
-
+            //Stop running animator
+            if (m_navMeshAgent.stoppingDistance >= distanceToPlayer) {
+            }
             //Gun Shoots in animation.
             m_Animator.SetTrigger("Shoot");
+
+        }
+        else
+        {
+    //        m_Animator.SetBool("isRunning", false);
         }
     
     }

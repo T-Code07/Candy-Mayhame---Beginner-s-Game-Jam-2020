@@ -16,21 +16,7 @@ public class GunScript : MonoBehaviour
     public void ShootGun()
     {
         CreateBullet();
-        if (isPlayer)
-        {
-            RaycastHit hit;
-            Physics.Raycast(gameObject.GetComponentInParent<PlayerController>().transform.position, m_shootPoint.transform.forward, out hit);
-
-            try
-            {
-                print(hit.transform.gameObject.name);
-            }
-            catch (NullReferenceException)
-            {
-                print("Didn't hit anything");
-            }
-
-        }
+       
     }
 
  
@@ -53,9 +39,11 @@ public class GunScript : MonoBehaviour
     {
         Gizmos.DrawLine(m_shootPoint.transform.position, m_shootPoint.transform.forward);
 
-        if (isPlayer)
+       try
         {
             Gizmos.DrawLine(gameObject.GetComponentInParent<PlayerController>().transform.position, m_shootPoint.transform.forward);
         }
+        catch (NullReferenceException) { }
+       
     }
 }

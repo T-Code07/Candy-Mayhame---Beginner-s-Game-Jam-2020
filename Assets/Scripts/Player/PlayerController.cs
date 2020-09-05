@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         if (!(movemment.x == 0f && movemment.z == 0f))
         {
             m_isIdle = true;
-            transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(movemment), Time.deltaTime * m_rotationSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movemment), Time.deltaTime * m_rotationSpeed);
         }
         else
         {
@@ -64,6 +64,18 @@ public class PlayerController : MonoBehaviour
         //Shoot
         if (Input.GetButtonDown("Fire1"))
         {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(ray, out hit);
+            
+
+            if (hasHit && hit.transform.tag == "Enemy")
+            {
+                Enemy_AI enemy = hit.transform.GetComponent<Enemy_AI>();
+                transform.LookAt( enemy.transform.position);
+            }
+            print(hit.transform.name);
             m_animator.SetTrigger("Shoot");
 
             //Animation triggers shooting.
@@ -81,6 +93,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
