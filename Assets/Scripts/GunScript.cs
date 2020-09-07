@@ -6,7 +6,7 @@ using UnityEngine;
 public class GunScript : MonoBehaviour
 {
     [SerializeField] public GameObject m_shootPoint;
-    [SerializeField] float m_bulletSpeed = 1000f;
+    [SerializeField] float m_bulletSpeed = 100f;
     [SerializeField] GameObject m_missile; 
     [SerializeField] float m_destroyBulletTime = 10f;
     [SerializeField] bool m_isPlayer = false;
@@ -19,10 +19,11 @@ public class GunScript : MonoBehaviour
         StopShooting();
        
     }
-    public void ShootGun(Transform target = null)
-    { 
-        CreateBullet();
+    public void ShootGun(Transform target)
+    {
         m_target = target;
+
+        CreateBullet();
         m_isShooting = true;
     }
     
@@ -41,11 +42,12 @@ public class GunScript : MonoBehaviour
         GameObject newGumball = Instantiate(m_missile, m_shootPoint.transform.position, Quaternion.identity);
         newGumball.GetComponent<Gumball>().TargetTransform = m_target;
 
-
+        print("gun: " + m_target.ToString());
+        print("from gun: " + newGumball.GetComponent<Gumball>().TargetTransform.ToString());
         newGumball.tag = "Projectile";
         newGumball.AddComponent<Rigidbody>();
 
-        newGumball.GetComponent<Rigidbody>().AddForce(m_shootPoint.transform.forward * m_bulletSpeed);
+     //   newGumball.GetComponent<Rigidbody>().AddForce(m_shootPoint.transform.forward * m_bulletSpeed);
       //  newGumball.GetComponent<Rigidbody>().useGravity = false;
         Destroy(newGumball, m_destroyBulletTime);
     }
