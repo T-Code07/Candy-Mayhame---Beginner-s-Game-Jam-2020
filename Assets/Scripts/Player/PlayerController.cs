@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_jumpForce = 10f;
     [SerializeField] float m_sprintBoost = .2f;
     [SerializeField] GunScript m_Gun;
+   
 
     private bool m_isIdle = true;
     private bool m_isRunning = false;
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private bool m_isTouchingGround = true;
     private bool m_isSprinting = false;
     private bool m_isJumping = false;
+    private bool m_raycastHasHit = false;
+    private Transform m_targetTransform;
     void Start()
     {
         m_animator = GetComponent<Animator>();
@@ -64,23 +67,32 @@ public class PlayerController : MonoBehaviour
         //Shoot
         if (Input.GetButtonDown("Fire1"))
         {
+          //  Ray ray = Physics.Raycast()
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
-            bool hasHit = Physics.Raycast(ray, out hit);
-            
+            bool hasHit = Physics.Raycast( ray , out hit);
 
-            if (hasHit && hit.transform.tag == "Enemy")
+            try { transform.LookAt(hit.transform.position); } catch { }
+
+            if (hasHit)
             {
-                Enemy_AI enemy = hit.transform.GetComponent<Enemy_AI>();
-                transform.LookAt( enemy.transform.position);
+         //       Instantiate()
+                if (hit.transform.tag == "Enemy")
+                {
+                    m_raycastHasHit = true;
+                    Enemy_AI enemy = hit.transform.GetComponent<Enemy_AI>();
+                }
+                else { m_raycastHasHit = false; }
+           //     m_Gun.m_shootPoint.transform.LookAt(hit.transform.position);
             }
-            print(hit.transform.name);
+
             m_animator.SetTrigger("Shoot");
 
             //Animation triggers shooting.
         }
-
+     
+   
         //Handle Jumping Animation:
         if (!m_isTouchingGround || transform.position.y > 1.5f)
         {
@@ -94,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+   
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -105,18 +118,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
+
     void Update()
     {
         //Update Animation depending on if the player is idle.
         m_animator.SetBool("isRunning", m_isIdle);
-       
 
     }
 
     //Called in Animation event.
     public void CallGunShootingMethod()
     {
-        m_Gun.ShootGun();
+        if (m_raycastHasHit)
+        {
+            m_Gun.ShootGun(m_targetTransform);
+        }
        
     }
 }

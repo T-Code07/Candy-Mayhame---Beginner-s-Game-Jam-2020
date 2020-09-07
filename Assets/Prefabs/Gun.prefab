@@ -79,12 +79,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_shootPoint: {fileID: 6525298076792097458}
   m_bulletSpeed: 1000
-  m_gumballList:
-  - {fileID: 2978847042727573164, guid: 513db1d414fb75f47859cf77fc996f8d, type: 3}
-  - {fileID: 1619078104697075234, guid: 9e3761fee503d3f409a734325a16c1e8, type: 3}
-  - {fileID: 449861055295107847, guid: 7fbb9cfaeb0025543a128673e1d5f8f1, type: 3}
-  destroyBulletTime: 10
-  isPlayer: 0
+  m_missile: {fileID: 2978847042727573164, guid: 513db1d414fb75f47859cf77fc996f8d,
+    type: 3}
+  m_destroyBulletTime: 10
+  m_isPlayer: 0
+  m_bulletFX: {fileID: 9044976822867983540}
 --- !u!1 &8506156736309638601
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3400750139467550093
 Transform:
   m_ObjectHideFlags: 0
@@ -140,13 +139,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9044976822867983540}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.022, y: 0.215, z: 0.057}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.022, y: 0.26, z: 0.094}
   m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
   m_Children: []
   m_Father: {fileID: 3744765598053226325}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!198 &3182683907914873163
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -163,7 +162,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -283,7 +282,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 30
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2405,7 +2404,7 @@ ParticleSystem:
     randomizePerFrame: 0
   ExternalForcesModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     multiplierCurve:
       serializedVersion: 2
       minMaxState: 0
@@ -3669,9 +3668,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0

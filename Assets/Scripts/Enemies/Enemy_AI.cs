@@ -54,7 +54,7 @@ public class Enemy_AI : MonoBehaviour
     //Called in Animation Event
     public void CallGunShot()
     {
-        m_gun.ShootGun();
+        m_gun.ShootGun(m_playerObject.transform);
     }
     private void OnDrawGizmos()
     {
