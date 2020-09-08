@@ -8,7 +8,6 @@ public class Health : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.name);
         if(collision.gameObject.tag == "Projectile")
         {
             print(name + ": has been hit");

@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         //Sprint
         if (Input.GetButton("Sprint"))
         {
-            print("Sprinting...");
+
             speed = m_Speed + (m_Speed * m_sprintBoost);
         }
 
@@ -77,14 +77,15 @@ public class PlayerController : MonoBehaviour
 
             if (hasHit)
             {
-         //       Instantiate()
+                m_targetTransform = hit.transform;
+
                 if (hit.transform.tag == "Enemy")
                 {
                     m_raycastHasHit = true;
                     Enemy_AI enemy = hit.transform.GetComponent<Enemy_AI>();
+                    m_targetTransform = enemy.transform;
                 }
                 else { m_raycastHasHit = false; }
-           //     m_Gun.m_shootPoint.transform.LookAt(hit.transform.position);
             }
 
             m_animator.SetTrigger("Shoot");
@@ -116,6 +117,7 @@ public class PlayerController : MonoBehaviour
             //Turn off jumping animation
             m_isTouchingGround = true;
         }
+       
     }
 
     
@@ -130,10 +132,9 @@ public class PlayerController : MonoBehaviour
     //Called in Animation event.
     public void CallGunShootingMethod()
     {
-        if (m_raycastHasHit)
-        {
+        
             m_Gun.ShootGun(m_targetTransform);
-        }
+        
        
     }
 }

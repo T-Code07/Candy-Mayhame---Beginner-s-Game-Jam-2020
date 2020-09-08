@@ -42,13 +42,6 @@ public class GunScript : MonoBehaviour
         GameObject newGumball = Instantiate(m_missile, m_shootPoint.transform.position, Quaternion.identity);
         newGumball.GetComponent<Gumball>().TargetTransform = m_target;
 
-        print("gun: " + m_target.ToString());
-        print("from gun: " + newGumball.GetComponent<Gumball>().TargetTransform.ToString());
-        newGumball.tag = "Projectile";
-        newGumball.AddComponent<Rigidbody>();
-
-     //   newGumball.GetComponent<Rigidbody>().AddForce(m_shootPoint.transform.forward * m_bulletSpeed);
-      //  newGumball.GetComponent<Rigidbody>().useGravity = false;
         Destroy(newGumball, m_destroyBulletTime);
     }
 

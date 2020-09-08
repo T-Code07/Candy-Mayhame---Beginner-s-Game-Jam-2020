@@ -10,8 +10,8 @@ public class Gumball : MonoBehaviour
     private Transform m_targetTransform;
     private bool isLookingAtObject;
     private Rigidbody m_rigidBody;
-    private bool m_hasErrored = false; 
-  //  private List<GameObject> 
+    private bool m_hasErrored = false;
+    private List<GameObject> m_groundObjects = new List<GameObject>();
     public Transform TargetTransform
     {
         get { return m_targetTransform; }
@@ -26,31 +26,35 @@ public class Gumball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-    //    Destroy(gameObject, 1f);
+        
+        print("BOOM! " + gameObject.name + " is down.");
+        Destroy(gameObject, 1f);
     }
 
     private void Start()
     {
+        gameObject.tag = "Projectile";
+        gameObject.AddComponent<Rigidbody>();
+
         m_rigidBody = GetComponent<Rigidbody>();
+        m_rigidBody.useGravity = false;
+        m_rigidBody.AddForce(transform.forward * m_speed);
+
     }
 
 
     private void FixedUpdate()
     {
-        print("Fixed Update: " + m_targetTransform.ToString());
         if (m_targetTransform == null)
         {
-            print("Gun isn't shooting at anything. has errored: " + m_hasErrored.ToString());
-            
-            m_hasErrored = true;
+            m_rigidBody.AddForce(transform.forward * m_speed);
+            Debug.Log("No transform exists on target.");
             return;
         }
 
         float distanceToTarget = Vector3.Distance(transform.position, m_targetTransform.position);
 
-        //   transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(m_targetTransform.position), m_speed * Time.deltaTime);
 
-      //  GameObject ground = ReturnGround();
 
         if(distanceToTarget > m_focusDistance)
         {
@@ -58,18 +62,7 @@ public class Gumball : MonoBehaviour
 
             m_rigidBody.AddForce(transform.forward * m_speed);
         }
-    //    if(Vector3.Distance(transform.position, )
         
     }
 
-//    private GameObject ReturnGround()
-  //  {
-    //    foreach (GameObject groundItem in ) ;
-    //}
-
-    private void Update()
-    {
-        print("Update: " + m_targetTransform.ToString());
-        
-    }
 }
