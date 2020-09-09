@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
+using UnityEngine.UI;
+[RequireComponent(typeof(AudioSource))]
 public class Health : MonoBehaviour
 {
     [SerializeField] float m_healthPoints = 100f;
     [SerializeField] GameObject m_deathFX;
     [SerializeField] bool m_isEnemy = true;
-   
+    [SerializeField] AudioClip m_deathSX;
+    [SerializeField] UIManager m_UIManager;
+
+    private AudioSource m_audioSource;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -20,22 +26,41 @@ public class Health : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        m_audioSource = GetComponent<AudioSource>();
+       
+
+    }
+
 
     private void Update()
     {
-         if(m_healthPoints <= 0)
+
+        if (!m_isEnemy)
         {
+            m_UIManager.updateHealthText(m_healthPoints.ToString());
+        }
+        if (m_healthPoints <= 0)
+        {
+
             GameObject newDeathFX = Instantiate(m_deathFX, gameObject.transform.position, Quaternion.identity);
+           
             Destroy(newDeathFX, 2f);
 
          
             if (m_isEnemy)
             {
+                m_audioSource.clip = m_deathSX;
+                m_audioSource.Play();
                 Destroy(gameObject.GetComponentInParent<Enemy_AI>().gameObject);
             }
             else
             {
-                Destroy(gameObject);
+                print("Player dead");
+                m_UIManager.m_isPlayerDead = true;
+                Time.timeScale = 0f;
+               // Destroy(gameObject);
             }
         }
     }

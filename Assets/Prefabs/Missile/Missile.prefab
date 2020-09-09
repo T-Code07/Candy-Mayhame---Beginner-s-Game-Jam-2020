@@ -142,6 +142,7 @@ MonoBehaviour:
   m_ExplosionFX: {fileID: 7579854765193226137, guid: 383610837e862c3479ca830a432686cc,
     type: 3}
   m_takeOffTime: 0.25
+  m_explosionSFX: {fileID: 8300000, guid: ab60389c6c7aadd43b0d82b5eb6a585f, type: 3}
   m_ExplosionDamage: 5
 --- !u!136 &3999170257481025642
 CapsuleCollider:

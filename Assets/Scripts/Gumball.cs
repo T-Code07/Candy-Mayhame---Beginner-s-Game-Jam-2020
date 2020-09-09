@@ -9,6 +9,7 @@ public class Gumball : MonoBehaviour
     [SerializeField] float m_focusDistance = 5f;
     [SerializeField] GameObject m_ExplosionFX;
     [SerializeField] float m_takeOffTime = 2f; //Time to get out of range of shooter so that doesn't hit them.
+    [SerializeField] AudioClip m_explosionSFX;
 
     public  int m_ExplosionDamage = 5;
     private Transform m_targetTransform;
@@ -49,9 +50,12 @@ public class Gumball : MonoBehaviour
 
         GameObject explosionFX = null;
         //Create explosion FX
-        try {explosionFX = Instantiate(m_ExplosionFX, transform.position, Quaternion.identity); } catch { }
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+
+        try { explosionFX = Instantiate(m_ExplosionFX, transform.position, Quaternion.identity); } catch { }
 
         try { Destroy(explosionFX, 2f); } catch { }
+
         //Destroy
         try { Destroy(gameObject); } catch { }
     }
