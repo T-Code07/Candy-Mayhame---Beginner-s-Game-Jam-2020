@@ -139,6 +139,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 65.92
   m_focusDistance: 2
+  m_ExplosionFX: {fileID: 7579854765193226137, guid: 383610837e862c3479ca830a432686cc,
+    type: 3}
+  m_takeOffTime: 0.25
+  m_ExplosionDamage: 5
 --- !u!136 &3999170257481025642
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -176,14 +180,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6016910217842153529}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.1897955, y: 0, z: 0.57089835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6881373335621798337}
   m_Father: {fileID: 6412278123071328520}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1001 &1874966772441719515
 PrefabInstance:
   m_ObjectHideFlags: 0
