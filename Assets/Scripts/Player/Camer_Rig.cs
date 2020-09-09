@@ -8,6 +8,13 @@ public class Camer_Rig : MonoBehaviour
     
     void Update()
     {
-        transform.position = m_playerPosition.position;
+        try
+        {
+            transform.position = m_playerPosition.position;
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.LogWarning("Camera Rig: Player is missing in scene.");
+        }
     }
 }

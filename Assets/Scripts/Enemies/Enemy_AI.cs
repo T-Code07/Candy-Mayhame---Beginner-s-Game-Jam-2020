@@ -28,33 +28,46 @@ public class Enemy_AI : MonoBehaviour
 
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, m_playerObject.transform.position);
-        if(distanceToPlayer <= m_attackDistance)
+        try
         {
-            m_Animator.SetTrigger("isRunning");
-            transform.LookAt(m_playerObject.transform.position);
-           // transform.rotation = Quaternion.Slerp(transform.rotation, lookAt, m_rotationSpeed);
-            m_navMeshAgent.SetDestination(m_playerObject.transform.position);
-            
+            float distanceToPlayer = Vector3.Distance(transform.position, m_playerObject.transform.position);
+            if (distanceToPlayer <= m_attackDistance)
+            {
+                m_Animator.SetTrigger("isRunning");
+                transform.LookAt(m_playerObject.transform.position);
+                // transform.rotation = Quaternion.Slerp(transform.rotation, lookAt, m_rotationSpeed);
+                m_navMeshAgent.SetDestination(m_playerObject.transform.position);
 
-            //Stop running animator
-            if (m_navMeshAgent.stoppingDistance >= distanceToPlayer) {
+
+                //Stop running animator
+                if (m_navMeshAgent.stoppingDistance >= distanceToPlayer)
+                {
+                }
+                //Gun Shoots in animation.
+                m_Animator.SetTrigger("Shoot");
+
             }
-            //Gun Shoots in animation.
-            m_Animator.SetTrigger("Shoot");
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.LogWarning("Enemy AI: Player is missing in scene.");
 
         }
-        else
-        {
-    //        m_Animator.SetBool("isRunning", false);
-        }
-    
+
     }
 
     //Called in Animation Event
     public void CallGunShot()
     {
-        m_gun.ShootGun(m_playerObject.transform);
+        try
+        {
+            m_gun.ShootGun(m_playerObject.transform);
+        }
+        catch (MissingReferenceException)
+        {
+            Debug.LogWarning("Enemy AI (Animation): Player is missing in scene.");
+
+        }
     }
     private void OnDrawGizmos()
     {

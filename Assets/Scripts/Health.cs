@@ -5,17 +5,9 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] float m_healthPoints = 100f;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Projectile")
-        {
-            Gumball projectileScript = other.gameObject.GetComponent<Gumball>();
-
-            DecreaseHealth(projectileScript.m_ExplosionDamage);
-            print(name + ": has been hit. Health: " + m_healthPoints.ToString());
-        }
-    }
+    [SerializeField] GameObject m_deathFX;
+    [SerializeField] bool m_isEnemy = true;
+   
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -28,10 +20,32 @@ public class Health : MonoBehaviour
         }
     }
 
-    
 
-    public void DecreaseHealth(int damage)
+    private void Update()
     {
+         if(m_healthPoints <= 0)
+        {
+            GameObject newDeathFX = Instantiate(m_deathFX, gameObject.transform.position, Quaternion.identity);
+            Destroy(newDeathFX, 2f);
+
+         
+            if (m_isEnemy)
+            {
+                Destroy(gameObject.GetComponentInParent<Enemy_AI>().gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+
+    
+    private void DecreaseHealth(int damage)
+    {
+        
         m_healthPoints -= damage;
+
     }
 }
