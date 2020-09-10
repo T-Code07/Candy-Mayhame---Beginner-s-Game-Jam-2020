@@ -20,6 +20,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_mutedText;
     [SerializeField] float m_showMuteTextTime = 3f;
 
+    //Audio:
+    [SerializeField] Music_Player m_musicPlayer;
+
     //General:
     public bool m_isPlayerDead = false;
     private bool m_isPaused = false;
@@ -48,6 +51,7 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 1f;
                 m_menu.active = false;
                 m_mainMenuText.enabled = false;
+                m_musicPlayer.playMainTrack();
             }
             else
             {
@@ -55,6 +59,7 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 0f;
                 m_menu.active = true;
                 m_mainMenuText.enabled = true;
+                m_musicPlayer.playMenuTrack();
             }
         }
        
