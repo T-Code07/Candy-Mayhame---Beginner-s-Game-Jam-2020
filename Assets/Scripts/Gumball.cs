@@ -50,7 +50,6 @@ public class Gumball : MonoBehaviour
 
         GameObject explosionFX = null;
         //Create explosion FX
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
 
         try { explosionFX = Instantiate(m_ExplosionFX, transform.position, Quaternion.identity); } catch { }
 
@@ -102,8 +101,11 @@ public class Gumball : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Checks to make sure missile has taken off.
-  //      if (!m_hasTakenOff) return;
+        //      if (!m_hasTakenOff) return;
 
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = m_explosionSFX;
+        audioSource.Play();
         StartCoroutine(Explode());
 
     }
