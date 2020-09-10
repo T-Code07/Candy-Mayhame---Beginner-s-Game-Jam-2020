@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] int m_restartScene = 0;
     [SerializeField] int m_MainMenu = 1;
     [SerializeField] TextMeshProUGUI m_mainMenuText;
-    [SerializeField] TextMeshProUGUI m_controlsText;
 
     //Muted:
     [SerializeField] TextMeshProUGUI m_mutedText;
@@ -24,7 +23,6 @@ public class UIManager : MonoBehaviour
     //General:
     public bool m_isPlayerDead = false;
     private bool m_isPaused = false;
-    private bool m_showingHelp = false;
 
     private void Start()
     {
