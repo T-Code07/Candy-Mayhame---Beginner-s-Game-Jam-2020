@@ -9,6 +9,7 @@ public class GunScript : MonoBehaviour
     [SerializeField] GameObject m_missile; 
     [SerializeField] float m_destroyBulletTime = 10f;
     [SerializeField] int m_maxCurrentBullets = 100;
+    [SerializeField] AudioClip m_gunSFX;
 
     private bool m_isShooting = false;
     private Transform m_target;
@@ -38,6 +39,10 @@ public class GunScript : MonoBehaviour
         if (m_currentBullets.Count <= m_maxCurrentBullets)
         {
             GameObject newGumball = Instantiate(m_missile, m_shootPoint.transform.position, Quaternion.identity);
+            AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+
+            audioSource.PlayOneShot(m_gunSFX, .5f);
+
             newGumball.GetComponent<Gumball>().TargetTransform = m_target;
             m_currentBullets.Add(newGumball);
 

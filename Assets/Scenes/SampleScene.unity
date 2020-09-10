@@ -437,7 +437,7 @@ PrefabInstance:
     - target: {fileID: 1796762647, guid: 9bbf217b038dd564ab8fff098fcfa571, type: 3}
       propertyPath: m_deathSX
       value: 
-      objectReference: {fileID: 8300000, guid: 5ec4fdffd0cc18d4ca8bb1381e674ece, type: 3}
+      objectReference: {fileID: 8300000, guid: 13d2144e8be01664ab4c3a8aa60e6cca, type: 3}
     - target: {fileID: 1796762647, guid: 9bbf217b038dd564ab8fff098fcfa571, type: 3}
       propertyPath: m_UIManager
       value: 

@@ -76,13 +76,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_shootPoint: {fileID: 6525298076792097458}
-  m_bulletSpeed: 1000
   m_missile: {fileID: 2978847042727573164, guid: 513db1d414fb75f47859cf77fc996f8d,
     type: 3}
   m_destroyBulletTime: 10
-  m_bulletFX: {fileID: 0}
   m_maxCurrentBullets: 1000
-  m_parentTransform: {fileID: 0}
+  m_gunSFX: {fileID: 8300000, guid: 582fb9d1eb2e27547a5b1718419b6de5, type: 3}
 --- !u!1001 &5842596364310943197
 PrefabInstance:
   m_ObjectHideFlags: 0

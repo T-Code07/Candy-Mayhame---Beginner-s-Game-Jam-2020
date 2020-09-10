@@ -57,9 +57,11 @@ public class Health : MonoBehaviour
             }
             else
             {
+                m_audioSource.PlayOneShot(m_deathSX);
                 print("Player dead");
                 m_UIManager.m_isPlayerDead = true;
                 Time.timeScale = 0f;
+                m_audioSource.Stop();
                // Destroy(gameObject);
             }
         }

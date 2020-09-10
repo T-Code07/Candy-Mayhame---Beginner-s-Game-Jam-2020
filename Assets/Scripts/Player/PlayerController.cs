@@ -79,6 +79,9 @@ public class PlayerController : MonoBehaviour
             {
                 m_targetTransform = hit.transform;
 
+                //player clicked himself.
+                if (hit.transform.tag == "Player") return;
+
                 if (hit.transform.tag == "Enemy")
                 {
                     m_raycastHasHit = true;
