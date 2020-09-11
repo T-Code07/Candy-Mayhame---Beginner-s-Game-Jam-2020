@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pLayerIsDead: 0
-  m_healthPoints: 100
+  m_healthPoints: 2
   m_deathFX: {fileID: 6046794850347431667, guid: f2c16f5639ee7ef418f2b93aaf00a5b0,
     type: 3}
   m_isEnemy: 1

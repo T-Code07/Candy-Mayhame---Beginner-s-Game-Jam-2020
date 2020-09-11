@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] int m_restartScene = 0;
     [SerializeField] int m_MainMenu = 1;
     [SerializeField] TextMeshProUGUI m_mainMenuText;
+    [SerializeField] GameObject m_creditsCanvas;
 
     //Muted:
     [SerializeField] TextMeshProUGUI m_mutedText;
@@ -34,6 +35,7 @@ public class UIManager : MonoBehaviour
         m_deadText.enabled = false;
         m_menu.active = false;
         m_mainMenuText.enabled = false;
+       m_creditsCanvas.active = false;
     }
     private void Update()
     {
@@ -63,6 +65,13 @@ public class UIManager : MonoBehaviour
             }
         }
        
+    }
+
+    public void ShowCredits()
+    {
+        m_creditsCanvas.active = true;
+        gameObject.active = false;
+        
     }
 
     public IEnumerator MuteSoundTextDisplay(bool isMuted)
