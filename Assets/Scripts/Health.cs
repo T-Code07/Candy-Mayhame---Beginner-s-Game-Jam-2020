@@ -7,6 +7,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class Health : MonoBehaviour
 {
+    public bool m_pLayerIsDead = false;
+
     [SerializeField] float m_healthPoints = 100f;
     [SerializeField] GameObject m_deathFX;
     [SerializeField] bool m_isEnemy = true;
@@ -62,6 +64,7 @@ public class Health : MonoBehaviour
                 m_UIManager.m_isPlayerDead = true;
                 Time.timeScale = 0f;
                 m_audioSource.Stop();
+                m_pLayerIsDead = true;
                // Destroy(gameObject);
             }
         }

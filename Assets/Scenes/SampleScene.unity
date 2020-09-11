@@ -748,6 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 152535223}
   - component: {fileID: 152535224}
+  - component: {fileID: 152535225}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -782,6 +783,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gravity: 9.81
+--- !u!114 &152535225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152535222}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ae480c1bcf794429415158efd0f13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_levleType: 0
+  m_surviveEnemyNumber: 20
+  m_enemyObject: {fileID: 0}
 --- !u!4 &160608124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5480659355133460919, guid: c8cf98f17e7060346a589e39a4f6df71,
@@ -9258,6 +9274,10 @@ PrefabInstance:
       propertyPath: m_musicPlayer
       value: 
       objectReference: {fileID: 584061623}
+    - target: {fileID: 1108047605, guid: 163b6c92ec53deb4da8e77e87a9f503f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163b6c92ec53deb4da8e77e87a9f503f, type: 3}
 --- !u!1001 &1044507318801996747
