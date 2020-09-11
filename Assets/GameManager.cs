@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     [Space(5)]
 
     [Header("Spawner: ")]
-    [SerializeField] int m_enemySpawnArea = 1;
+    [SerializeField] int m_enemySpawnArea = 20;
     [SerializeField] int m_maxEnemies = 20;
     [SerializeField] Enemy_AI m_enemyPref;
     Vector3 m_spawnPlace;
@@ -41,6 +41,13 @@ public class GameManager : MonoBehaviour
     private bool m_gameIsRunning = false;
     private bool m_gameJustStarted = false;
     private float m_survivalTimeStart;
+
+    public bool GamePlayed
+    {
+        get { return m_GamePlayed; }
+        set { m_GamePlayed = value; }
+    }
+
     private void Start()
     {
         m_player = FindObjectOfType<PlayerController>();
@@ -49,8 +56,10 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        
         GameChooser();
         m_gameJustStarted = true;
+        print("Starting Game...");
     }
 
     void Update()
@@ -70,6 +79,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            print("Game Ended");
             m_gameIsRunning = false;
             if(m_levelType == LevelType.SURVIVAL)
             {
@@ -79,13 +89,14 @@ public class GameManager : MonoBehaviour
             {
                 print("You surved for: " + m_wavesFinished.ToString());
             }
-            print("Game ended");
+          
         }
 
     }
 
     private void EnemySpawner(LevelType levelType)
     {
+        print("Spawing Enemies");
         if (levelType == LevelType.SURVIVAL)
         {
             SurvivalGame();
@@ -105,8 +116,10 @@ public class GameManager : MonoBehaviour
         //first time it has looped,
         if (m_gameJustStarted)
         {
+            print("Kill-All: Runng Update for 1st time.");
             for (int i = 0; i <= m_maxEnemies; i++)
             {
+                print("Need to spawn more enemies");
                 SpawnNewEnemy();
             }
         }
@@ -122,8 +135,9 @@ public class GameManager : MonoBehaviour
     {
         m_survivalTimeStart = Time.deltaTime;
 
-        if (m_Enemies.Length == 2)//If only 2 enemies in scene: spawn more
+        if (m_Enemies.Length <= 2)//If only 2 enemies in scene: spawn more
         {
+            print("Survival Game: Trying to spawn more enemies");
             SpawnNewEnemy();
         }
         
@@ -178,6 +192,8 @@ public class GameManager : MonoBehaviour
                 m_levelType = LevelType.WAVE;
                 break;
         }
+
+        print("Game Mode Set To: " + m_levelType.ToString());
     }
 
     private void SpawnNewEnemy()
@@ -186,12 +202,13 @@ public class GameManager : MonoBehaviour
         newEnemy.transform.position = Random.insideUnitSphere * m_enemySpawnArea;//spawn in at a random position around a sphere that is the size of enemySpawnArea
         newEnemy.transform.position = new Vector3(newEnemy.transform.position.x, 0);//Change wave's postion to be at y=0
         newEnemy.transform.rotation = Quaternion.identity;//makes sure rotation isn't crazy
+        print("Spawing more enemies");
     }
 
 
     private void OnDrawGizmos()//Draws things
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.green;
         try { Gizmos.DrawWireSphere(m_player.transform.position, m_enemySpawnArea); }//Draws a wire sphere at player transform with the area being equal to enemySpawnArea while player alive
         catch { }
     }

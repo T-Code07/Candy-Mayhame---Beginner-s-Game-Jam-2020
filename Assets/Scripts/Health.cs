@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
             Gumball projectileScript = collision.gameObject.GetComponent<Gumball>();
 
             DecreaseHealth(projectileScript.m_ExplosionDamage);
-            print(name + ": has been hit. Health: " + m_healthPoints.ToString());
+           
         }
     }
 
@@ -60,7 +60,8 @@ public class Health : MonoBehaviour
             else
             {
                 m_audioSource.PlayOneShot(m_deathSX);
-                print("Player dead");
+                FindObjectOfType<GameManager>().GamePlayed = true;
+
                 m_UIManager.m_isPlayerDead = true;
                 Time.timeScale = 0f;
                 m_audioSource.Stop();
