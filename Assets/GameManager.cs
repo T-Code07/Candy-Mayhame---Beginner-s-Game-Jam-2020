@@ -79,7 +79,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            m_UIManager.m_isPlayerDead = true;
+            if (m_player.gameObject.GetComponent<Health>().m_pLayerIsDead)
+            {
+                m_UIManager.ChangeGameStatusText("You Died");
+            }
             print("Game Ended");
             m_gameIsRunning = false;
             if(m_levelType == LevelType.SURVIVAL)
@@ -131,6 +134,7 @@ public class GameManager : MonoBehaviour
         {
             m_GamePlayed = true;
             print("You won the kill all game!");
+            m_UIManager.ChangeGameStatusText("You Won!");
         }
     }
 
@@ -162,6 +166,8 @@ public class GameManager : MonoBehaviour
         else
         {
             m_GamePlayed = true;
+            m_UIManager.ChangeGameStatusText("You Won");
+
             print("You survived all of the waves!");
         }
         

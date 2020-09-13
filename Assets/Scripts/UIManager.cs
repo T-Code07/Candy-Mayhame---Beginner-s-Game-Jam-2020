@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     //Health:
     [SerializeField] TextMeshProUGUI m_healthText;
-    [SerializeField] TextMeshProUGUI m_deadText;
+    [SerializeField] TextMeshProUGUI m_gameStatusText;
 
     //Menu:
     [SerializeField] GameObject m_menu;
@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         m_mutedText.enabled = false;
-        m_deadText.enabled = false;
+        m_gameStatusText.enabled = false;
         m_menu.active = false;
         m_mainMenuText.enabled = false;
        m_creditsCanvas.active = false;
@@ -41,8 +41,9 @@ public class UIManager : MonoBehaviour
     {
         if (m_isPlayerDead == true)
         {
-            m_menu.active = true;
-            m_deadText.enabled = true;
+           
+            ChangeGameStatusText("You Died");
+            
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -72,6 +73,14 @@ public class UIManager : MonoBehaviour
         m_creditsCanvas.active = true;
         gameObject.active = false;
         
+    }
+
+    public void ChangeGameStatusText(string newText)
+    {
+        m_menu.active = true;
+        m_gameStatusText.enabled = true;
+        m_gameStatusText.text = newText;
+
     }
 
     public IEnumerator MuteSoundTextDisplay(bool isMuted)
