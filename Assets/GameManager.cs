@@ -64,11 +64,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (m_player.gameObject.GetComponent<Health>().m_pLayerIsDead) return;
+       // if (m_player.gameObject.GetComponent<Health>().m_pLayerIsDead) return;
        // if(m_player)
         m_Enemies = new Enemy_AI[m_maxEnemies];
         m_Enemies = FindObjectsOfType<Enemy_AI>();
-
+        print(m_GamePlayed);
         if (!m_GamePlayed)
         {
             m_gameIsRunning = true;
@@ -79,17 +79,20 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            m_UIManager.m_isPlayerDead = true;
             print("Game Ended");
             m_gameIsRunning = false;
             if(m_levelType == LevelType.SURVIVAL)
             {
-                print("You survived for: " + (Time.deltaTime - m_survivalTimeStart).ToString());
+                print("You survived for: " + Time.time.ToString());
             }
             else if(m_levelType == LevelType.WAVE)
             {
                 print("You surved for: " + m_wavesFinished.ToString());
             }
-          
+
+            //pause game
+            Time.timeScale = 0f;
         }
 
     }
@@ -124,7 +127,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(m_Enemies.Length <= 0)
+        if(m_Enemies.Length <= 0 && m_gameJustStarted == false)
         {
             m_GamePlayed = true;
             print("You won the kill all game!");
@@ -133,15 +136,13 @@ public class GameManager : MonoBehaviour
 
     private void SurvivalGame()
     {
-        m_survivalTimeStart = Time.deltaTime;
 
-        if (m_Enemies.Length <= 2)//If only 2 enemies in scene: spawn more
+        if (m_Enemies.Length <= 3)//If only 3 enemies in scene: spawn more
         {
             print("Survival Game: Trying to spawn more enemies");
             SpawnNewEnemy();
         }
         
-
     }
 
     private void WaveGame()
@@ -203,6 +204,7 @@ public class GameManager : MonoBehaviour
         newEnemy.transform.position = new Vector3(newEnemy.transform.position.x, 0);//Change wave's postion to be at y=0
         newEnemy.transform.rotation = Quaternion.identity;//makes sure rotation isn't crazy
         print("Spawing more enemies");
+        
     }
 
 

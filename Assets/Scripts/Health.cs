@@ -62,8 +62,7 @@ public class Health : MonoBehaviour
                 m_audioSource.PlayOneShot(m_deathSX);
                 FindObjectOfType<GameManager>().GamePlayed = true;
 
-                m_UIManager.m_isPlayerDead = true;
-                Time.timeScale = 0f;
+             
                 m_audioSource.Stop();
                 m_pLayerIsDead = true;
                // Destroy(gameObject);
