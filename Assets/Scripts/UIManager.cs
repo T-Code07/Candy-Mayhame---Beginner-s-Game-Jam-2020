@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
+    //Enemies:
+    [SerializeField] TextMeshProUGUI m_EnemyNumbersText;
+
     //Health:
     [SerializeField] TextMeshProUGUI m_healthText;
     [SerializeField] TextMeshProUGUI m_gameStatusText;
@@ -114,5 +117,11 @@ public class UIManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(m_MainMenu);
+    }
+
+    public void EnemyNumberTextUpdate(int newEnemyNumber)
+    {
+        m_EnemyNumbersText.text = "Number of Enemies: " + newEnemyNumber.ToString();
+        print("Updating new numbers");
     }
 }

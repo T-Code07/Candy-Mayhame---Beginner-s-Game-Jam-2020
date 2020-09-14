@@ -64,11 +64,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-       // if (m_player.gameObject.GetComponent<Health>().m_pLayerIsDead) return;
-       // if(m_player)
+
         m_Enemies = new Enemy_AI[m_maxEnemies];
         m_Enemies = FindObjectsOfType<Enemy_AI>();
-        print(m_GamePlayed);
+        m_UIManager.EnemyNumberTextUpdate(m_Enemies.Length);
+
         if (!m_GamePlayed)
         {
             m_gameIsRunning = true;
