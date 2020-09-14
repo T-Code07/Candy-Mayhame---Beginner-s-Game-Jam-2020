@@ -13,6 +13,7 @@ public class Camer_Rig : MonoBehaviour
     private void Start()
     {
         m_mainCamera = GetComponentInChildren<Camera>();
+        AudioListener.volume = 1f;
     }
     void Update()
     {
@@ -31,17 +32,17 @@ public class Camer_Rig : MonoBehaviour
             if (m_isMuted)
             {
                 m_isMuted = false;
-                
+                AudioListener.volume = 1f;
             }
             else
             {
                 m_isMuted = true;
+                AudioListener.volume = 0f;
             }
 
            StartCoroutine(m_UImanager.MuteSoundTextDisplay(m_isMuted));
         }
 
-        m_mainCamera.GetComponent<AudioListener>().enabled = !m_isMuted;
 
     }
 }

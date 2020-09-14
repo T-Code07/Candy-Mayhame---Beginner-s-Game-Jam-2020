@@ -98,7 +98,6 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(m_showMuteTextTime);
             m_mutedText.enabled = false;
         }
-        print("Enumerator finished");
     }
 
     public void updateHealthText(string health)
