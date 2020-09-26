@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     //Player Headsup Display:
     [Header("Visual:")]
     [SerializeField] GameObject m_playerHeadsupDisplayCanvas;
+   
     
     //Enemies:
     [Header("Enemy:")]
@@ -59,9 +60,11 @@ public class UIManager : MonoBehaviour
         m_menu.active = false;
         m_mainMenuText.enabled = false;
        m_creditsCanvas.active = false;
+
     }
     private void Update()
     {
+       
         if (m_isPlayerDead == true)
         {
            

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     Enemy_AI[] m_Enemies;
     
     [SerializeField] PlayerController m_player;
+    [SerializeField] LoadInEffect m_loadInEffect;
 
     [Header("Waves: ")]
     [SerializeField] int m_numberOfWaves = 10;
@@ -58,6 +59,10 @@ public class GameManager : MonoBehaviour
     {
         
         GameChooser();
+        StartCoroutine(m_loadInEffect.FadeIn(m_levelType.ToString()));
+
+    //    while (m_loadInEffect.IsFaded == true) return;
+
         m_gameJustStarted = true;
         print("Starting Game...");
     }
