@@ -6,26 +6,45 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
-    //Enemies:
-    [SerializeField] TextMeshProUGUI m_EnemyNumbersText;
-
-    //Health:
-    [SerializeField] TextMeshProUGUI m_healthText;
-    [SerializeField] TextMeshProUGUI m_gameStatusText;
-
-    //Menu:
+    //Main Menu:
+    [Header("Main Menu:")]
     [SerializeField] GameObject m_menu;
     [SerializeField] int m_restartScene = 0;
     [SerializeField] int m_MainMenu = 1;
     [SerializeField] TextMeshProUGUI m_mainMenuText;
     [SerializeField] GameObject m_creditsCanvas;
 
+    [Space(3)]
+
+    //Player Headsup Display:
+    [Header("Visual:")]
+    [SerializeField] GameObject m_playerHeadsupDisplayCanvas;
+    
+    //Enemies:
+    [Header("Enemy:")]
+    [SerializeField] TextMeshProUGUI m_EnemyNumbersText;
+
+    [Space(5)]
+
+    //Health:
+    [Header("Health:")]
+    [SerializeField] TextMeshProUGUI m_healthText;
+    [SerializeField] TextMeshProUGUI m_gameStatusText;
+
+    [Space(5)]
+
     //Muted:
+    [Header("Muted:")]
     [SerializeField] TextMeshProUGUI m_mutedText;
     [SerializeField] float m_showMuteTextTime = 3f;
 
+    [Space(5)]
+
     //Audio:
+    [Header("Audio:")]
     [SerializeField] Music_Player m_musicPlayer;
+
+    [Space(5)]
 
     //General:
     public bool m_isPlayerDead = false;
@@ -33,6 +52,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        m_playerHeadsupDisplayCanvas.active = true;
         Time.timeScale = 1f;
         m_mutedText.enabled = false;
         m_gameStatusText.enabled = false;
