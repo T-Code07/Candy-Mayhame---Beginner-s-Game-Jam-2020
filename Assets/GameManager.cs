@@ -49,9 +49,15 @@ public class GameManager : MonoBehaviour
         set { m_GamePlayed = value; }
     }
 
+    public string LevelTypeString
+    {
+        get { return m_levelType.ToString(); }
+     
+    }
     private void Start()
     {
         m_player = FindObjectOfType<PlayerController>();
+        m_loadInEffect.enabled = false;
         RestartGame();
     }
 
@@ -59,9 +65,9 @@ public class GameManager : MonoBehaviour
     {
         
         GameChooser();
-        StartCoroutine(m_loadInEffect.FadeIn(m_levelType.ToString()));
+        m_loadInEffect.enabled = true;
 
-    //    while (m_loadInEffect.IsFaded == true) return;
+        
 
         m_gameJustStarted = true;
         print("Starting Game...");
@@ -69,7 +75,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (m_loadInEffect.IsFaded == false) return;
 
+        if (m_gameJustStarted)
+        {
+            m_UIManager.gameObject.active = true;
+        }
+      
         m_Enemies = new Enemy_AI[m_maxEnemies];
         m_Enemies = FindObjectsOfType<Enemy_AI>();
         m_UIManager.EnemyNumberTextUpdate(m_Enemies.Length);
