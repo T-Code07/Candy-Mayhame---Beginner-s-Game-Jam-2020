@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_fadeInTime: 2.5
-  m_waitTime: 4
+  m_waitTime: 2
   m_gameModeText: {fileID: 2026766808641494044}
   m_loadingText: {fileID: 960806386}
 --- !u!1 &2026766809075152870

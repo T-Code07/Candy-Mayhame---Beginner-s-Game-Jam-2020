@@ -65,8 +65,9 @@ public class GameManager : MonoBehaviour
     {
         
         GameChooser();
+        
         m_loadInEffect.enabled = true;
-
+        print("load effect enabled");
         
 
         m_gameJustStarted = true;
@@ -75,7 +76,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (m_loadInEffect.IsFaded == false) return;
+      
+        if (m_loadInEffect.IsFaded == false)  return;
 
         if (m_gameJustStarted)
         {
