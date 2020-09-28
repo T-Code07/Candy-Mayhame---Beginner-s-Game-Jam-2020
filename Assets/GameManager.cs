@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float m_timeTillNextWave = 5f;
     private int m_wavesFinished = 0;
     private float m_lastTimeWaveSpawnd;
+    private bool m_waveCurrentlyLoading = false;
 
 
 
@@ -173,6 +174,7 @@ public class GameManager : MonoBehaviour
 
     private void WaveGame()
     {
+        int currentWave = m_wavesFinished;
         if (m_gameJustStarted)
         {
             m_wavesFinished = 0;
@@ -181,7 +183,7 @@ public class GameManager : MonoBehaviour
         }
 
         print(m_lastTimeWaveSpawnd - Time.deltaTime <= m_timeTillNextWave);
-        if (m_wavesFinished < m_numberOfWaves)
+        if (m_wavesFinished < m_numberOfWaves && !m_waveCurrentlyLoading)
         {
             StartCoroutine(SpawnNewWaveWait());
             if (m_gameJustStarted) { return; }
@@ -201,13 +203,16 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SpawnNewWaveWait()
     {
+        m_waveCurrentlyLoading = true;
         yield return new WaitForSeconds(m_timeTillNextWave);
         SpawnNewWave();
+        m_waveCurrentlyLoading = false;
 
     }
 
     private void SpawnNewWave()
     {
+       
         for (int i = 0; i <= m_enemiesPerWave; i++)
         {
             SpawnNewEnemy();

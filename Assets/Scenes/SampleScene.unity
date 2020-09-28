@@ -799,6 +799,7 @@ MonoBehaviour:
   m_loadInEffect: {fileID: 1358594269}
   m_numberOfWaves: 10
   m_enemiesPerWave: 4
+  m_timeTillNextWave: 5
   m_enemySpawnArea: 20
   m_maxEnemies: 20
   m_enemyPref: {fileID: 2471326729438302932, guid: daa610a370eca5947a52e441bc406815,
@@ -3034,7 +3035,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 8.6e-43, y: -3.8081493e-19, z: 4.5904e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3250,7 +3251,7 @@ PrefabInstance:
     - target: {fileID: 8002020541251547774, guid: 9bbf217b038dd564ab8fff098fcfa571,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 1.44
       objectReference: {fileID: 0}
     - target: {fileID: 8002020541251547774, guid: 9bbf217b038dd564ab8fff098fcfa571,
         type: 3}
