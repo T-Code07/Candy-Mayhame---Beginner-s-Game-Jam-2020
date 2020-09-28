@@ -20,8 +20,11 @@ public class GameManager : MonoBehaviour
     [Header("Waves: ")]
     [SerializeField] int m_numberOfWaves = 10;
     [SerializeField] int m_enemiesPerWave = 4;
+    [SerializeField] float m_timeTillNextWave = 5f;
     private int m_wavesFinished = 0;
-  
+    private float m_lastTimeWaveSpawnd;
+
+
 
     [Space(5)]
 
@@ -173,16 +176,20 @@ public class GameManager : MonoBehaviour
         if (m_gameJustStarted)
         {
             m_wavesFinished = 0;
+            SpawnNewWave();
+            return;
         }
 
-        if (m_wavesFinished < m_numberOfWaves && m_Enemies.Length == 0)
+        print(m_lastTimeWaveSpawnd - Time.deltaTime <= m_timeTillNextWave);
+        if (m_wavesFinished < m_numberOfWaves)
         {
-            SpawnNewWave();
+            StartCoroutine(SpawnNewWaveWait());
             if (m_gameJustStarted) { return; }
 
             m_wavesFinished += 1;
+   
         }
-        else
+        else if(m_Enemies.Length == 0)
         {
             m_GamePlayed = true;
             m_UIManager.ChangeGameStatusText("You Won");
@@ -192,12 +199,20 @@ public class GameManager : MonoBehaviour
         
     }
 
+    private IEnumerator SpawnNewWaveWait()
+    {
+        yield return new WaitForSeconds(m_timeTillNextWave);
+        SpawnNewWave();
+
+    }
+
     private void SpawnNewWave()
     {
-        for(int i = 0; i <= m_enemiesPerWave; i++)
+        for (int i = 0; i <= m_enemiesPerWave; i++)
         {
             SpawnNewEnemy();
         }
+        m_lastTimeWaveSpawnd = Time.deltaTime;
     }
 
     private void GameChooser()
@@ -218,7 +233,7 @@ public class GameManager : MonoBehaviour
                 m_levelType = LevelType.WAVE;
                 break;
         }
-
+        m_levelType = LevelType.WAVE;
         print("Game Mode Set To: " + m_levelType.ToString());
     }
 
