@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class GunScript : MonoBehaviour
+public class MissileLauncher : MonoBehaviour
 {
     [SerializeField] public GameObject m_shootPoint;
     [SerializeField] GameObject m_missile; 

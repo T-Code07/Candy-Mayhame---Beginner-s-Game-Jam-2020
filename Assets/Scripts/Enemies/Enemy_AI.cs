@@ -10,7 +10,7 @@ public class Enemy_AI : MonoBehaviour
     [SerializeField] float m_attackDistance = 10f;
     [SerializeField] float m_GunRecoil = 10f;
     [SerializeField] float m_rotationSpeed = 3f;
-    [SerializeField] GunScript m_gun;
+    [SerializeField] MissileLauncher m_gun;
   //  [SerializeField] GameObject
 
     private GameObject m_playerObject;

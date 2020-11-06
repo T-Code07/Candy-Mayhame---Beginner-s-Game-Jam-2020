@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour
                 m_levelType = LevelType.WAVE;
                 break;
         }
-        m_levelType = LevelType.WAVE;
+       
         print("Game Mode Set To: " + m_levelType.ToString());
     }
 

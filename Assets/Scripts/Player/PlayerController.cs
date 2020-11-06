@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_rotationSpeed = 5f;
     [SerializeField] float m_jumpForce = 10f;
     [SerializeField] float m_sprintBoost = .2f;
-    [SerializeField] GunScript m_Gun;
+    [SerializeField] MissileLauncher m_Gun;
    
 
     private bool m_isIdle = true;
