@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
     {
         if(collision.gameObject.tag == "Projectile")
         {
-            Gumball projectileScript = collision.gameObject.GetComponent<Gumball>();
+            Missile projectileScript = collision.gameObject.GetComponent<Missile>();
 
             DecreaseHealth(projectileScript.m_ExplosionDamage);
            

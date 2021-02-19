@@ -43,11 +43,11 @@ public class MissileLauncher : MonoBehaviour
 
             audioSource.PlayOneShot(m_gunSFX, .5f);
 
-            newGumball.GetComponent<Gumball>().TargetTransform = m_target;
+            newGumball.GetComponent<Missile>().TargetTransform = m_target;
             m_currentBullets.Add(newGumball);
 
             //todo: edit to make delete from list when destroyed.
-            StartCoroutine(newGumball.GetComponent<Gumball>().Explode(m_destroyBulletTime));
+            StartCoroutine(newGumball.GetComponent<Missile>().Explode(m_destroyBulletTime));
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gumball : MonoBehaviour
+public class Missile : MonoBehaviour
 {
     [SerializeField] public float m_speed = 20f;
     [SerializeField] float m_focusDistance = 5f;
@@ -72,7 +72,7 @@ public class Gumball : MonoBehaviour
         //Calculate distance.
         float distanceToTarget = Vector3.Distance(transform.position, m_targetTransform.position);
 
-        //If distance to target is > focus distance, rotate towards an move forward.
+        //If distance to target is > focus distance, rotate towards and move forward.
         if(distanceToTarget > m_focusDistance)
         {
             transform.LookAt(m_targetTransform);
