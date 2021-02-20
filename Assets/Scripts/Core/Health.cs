@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 
 using UnityEngine.UI;
+using Candy.Guns.Projectiles;
 [RequireComponent(typeof(AudioSource))]
 public class Health : MonoBehaviour
 {
