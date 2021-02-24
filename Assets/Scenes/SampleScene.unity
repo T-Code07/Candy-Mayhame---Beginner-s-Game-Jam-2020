@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964128, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3272,6 +3272,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8002020541251547774, guid: 9bbf217b038dd564ab8fff098fcfa571,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795204417554481904, guid: 9bbf217b038dd564ab8fff098fcfa571,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bbf217b038dd564ab8fff098fcfa571, type: 3}
@@ -6806,6 +6816,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1480820484}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1482750729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1344323164523694142, guid: 9bbf217b038dd564ab8fff098fcfa571,
+    type: 3}
+  m_PrefabInstance: {fileID: 830225870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1492712303
 GameObject:
   m_ObjectHideFlags: 0
@@ -8768,6 +8784,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5669062057718690140}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2039371785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4169152361205957098, guid: 9bbf217b038dd564ab8fff098fcfa571,
+    type: 3}
+  m_PrefabInstance: {fileID: 830225870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2039371787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039371785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a939049f7040556468a6494c92e571a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_grenade: {fileID: 6143922550404643979, guid: 6e17815f8f3a0fc4686aae777df276e3,
+    type: 3}
+  m_grenadeLaunchSpeedY: 15
+  m_grenadeLaunchSpeedForward: 15
+  m_grenadeLaunchPoint: {fileID: 1482750729}
 --- !u!4 &2063924608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2665807103319255758, guid: 98f864ee6e6899248a6a50eede2c4ce6,

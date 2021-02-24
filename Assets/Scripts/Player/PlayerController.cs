@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_rotationSpeed = 5f;
     [SerializeField] float m_jumpForce = 10f;
     [SerializeField] float m_sprintBoost = .2f;
-    [SerializeField] MissileLauncher m_Gun;
    
 
     private bool m_isIdle = true;
@@ -25,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         m_animator = GetComponent<Animator>();
         m_rigidBody = GetComponent<Rigidbody>();
+
     }
 
     private void FixedUpdate()
@@ -136,9 +136,7 @@ public class PlayerController : MonoBehaviour
     //Called in Animation event.
     public void CallGunShootingMethod()
     {
-        
-            m_Gun.ShootGun(m_targetTransform);
-        
-       
+        //BroadcastMessage so that any child or componet that has this "ShootGun" function in it is called.
+        BroadcastMessage("ShootGun", m_targetTransform);        
     }
 }

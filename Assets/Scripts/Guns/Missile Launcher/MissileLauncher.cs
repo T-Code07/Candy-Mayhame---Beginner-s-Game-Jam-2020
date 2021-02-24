@@ -41,16 +41,16 @@ namespace Candy.Guns
         {
             if (m_currentBullets.Count <= m_maxCurrentBullets)
             {
-                GameObject newGumball = Instantiate(m_missile, m_shootPoint.transform.position, Quaternion.identity);
+                GameObject newMissile = Instantiate(m_missile, m_shootPoint.transform.position, Quaternion.identity);
                 AudioSource audioSource = gameObject.AddComponent<AudioSource>();
 
                 audioSource.PlayOneShot(m_gunSFX, .5f);
 
-                newGumball.GetComponent<Missile>().TargetTransform = m_target;
-                m_currentBullets.Add(newGumball);
+                newMissile.GetComponent<Missile>().TargetTransform = m_target;
+                m_currentBullets.Add(newMissile);
 
                 //todo: edit to make delete from list when destroyed.
-                StartCoroutine(newGumball.GetComponent<Missile>().Explode(m_destroyBulletTime));
+                StartCoroutine(newMissile.GetComponent<Missile>().Explode(m_destroyBulletTime));
             }
         }
 
