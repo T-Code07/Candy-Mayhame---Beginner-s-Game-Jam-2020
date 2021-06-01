@@ -8797,12 +8797,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2039371785}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a939049f7040556468a6494c92e571a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_grenade: {fileID: 6143922550404643979, guid: 6e17815f8f3a0fc4686aae777df276e3,
+  m_grenade: {fileID: 3236761613580824174, guid: 083f6669f2a039449a806714cbd12c5a,
     type: 3}
   m_grenadeLaunchSpeedY: 15
   m_grenadeLaunchSpeedForward: 15
