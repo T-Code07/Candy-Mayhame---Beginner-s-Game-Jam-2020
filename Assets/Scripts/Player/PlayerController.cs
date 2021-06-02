@@ -74,9 +74,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             m_playerInvetory.UseCurrentlySelected();
-                m_animator.SetTrigger("Shoot");
-
-            //Animation triggers shooting.
         }
      
    
@@ -113,14 +110,5 @@ public class PlayerController : MonoBehaviour
         //Update Animation depending on if the player is idle.
         m_animator.SetBool("isRunning", m_isIdle);
 
-    }
-
-  
-
-    //Called in Animation event.
-    public void CallGunShootingMethod()
-    {
-       
-        m_gun.ShootGun();
     }
 }

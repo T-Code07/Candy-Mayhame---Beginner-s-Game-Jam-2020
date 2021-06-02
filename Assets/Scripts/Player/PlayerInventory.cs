@@ -39,13 +39,15 @@ namespace Candy.Inventory //namespace for background scripts for guns.
         private PlayerInventoryTypes m_currentSelectedItemTypes;
         [SerializeField] GameObject m_gunArm;
         BasicGun m_gun;
-     
+        private Animator m_animator;
+
+
         void Start()
         {
              m_gun = m_gunArm.GetComponentInChildren<BasicGun>();
             InventoryList();
             m_currentSelectedNumber = 1;
-           
+            m_animator = GetComponent<Animator>();
         }
 
         private void InventoryList() 
@@ -62,10 +64,21 @@ namespace Candy.Inventory //namespace for background scripts for guns.
            if(m_currentSelectedItemTypes == PlayerInventoryTypes.WEAPON) 
             {
                 Debug.Log("Using Gun");
+
+                //Animation triggers shooting.
+                m_animator.SetTrigger("Shoot");
                 RaycastToTarget();
                
-                m_gun.ShootGun();
+                
             }
+        }
+
+
+        //Called in Animation event.
+        public void CallGunShootingMethod()
+        {
+          
+            m_gun.ShootGun();
         }
 
         private void RaycastToTarget() 
