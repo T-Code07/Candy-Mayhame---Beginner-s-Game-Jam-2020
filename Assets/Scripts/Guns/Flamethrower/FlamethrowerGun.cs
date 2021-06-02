@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlamethrowerGun : MonoBehaviour
+namespace Candy.Guns
 {
-    // Start is called before the first frame update
-    void Start()
+   /* public class FlamethrowerGun : BasicGun
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        void Update() 
+        {
+         //   if()
+        }
+    }*/
 }
+

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Candy.Guns;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour 
 {
     [SerializeField] float m_Speed = 7f;
     [SerializeField] float m_rotationSpeed = 5f;
     [SerializeField] float m_jumpForce = 10f;
     [SerializeField] float m_sprintBoost = .2f;
-   
-
+    [SerializeField] BasicGun m_gun;  
+    
     private bool m_isIdle = true;
     private bool m_isRunning = false;
     private Animator m_animator;
@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private bool m_isJumping = false;
     private bool m_raycastHasHit = false;
     private Transform m_targetTransform;
+  
+    
     void Start()
     {
         m_animator = GetComponent<Animator>();
@@ -68,7 +70,8 @@ public class PlayerController : MonoBehaviour
         //Shoot
         if (Input.GetButtonDown("Fire1"))
         {
-          //  Ray ray = Physics.Raycast()
+         
+            //  Ray ray = Physics.Raycast()
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             RaycastHit hit;
@@ -133,10 +136,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
+  
+
     //Called in Animation event.
     public void CallGunShootingMethod()
     {
-        //BroadcastMessage so that any child or componet that has this "ShootGun" function in it is called.
-        BroadcastMessage("ShootGun", m_targetTransform);        
+       
+        m_gun.ShootGun();
     }
 }

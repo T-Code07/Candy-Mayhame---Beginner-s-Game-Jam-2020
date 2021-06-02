@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicGun : MonoBehaviour
+namespace Candy.Guns
 {
-    [SerializeField] int m_gunDamage = 10;
-    [SerializeField] int m_ammoNumber = 20;
-
-    void Start()
+    /// <summary>
+    /// To make common item for controllers to use. 
+    /// </summary>
+    public abstract class BasicGun : MonoBehaviour
     {
-        
-    }
+        //placeholder
 
-    public void Shoot() 
-    {
-        //pew pew
+        public abstract void ShootGun();
+
+
     }
-   
 }

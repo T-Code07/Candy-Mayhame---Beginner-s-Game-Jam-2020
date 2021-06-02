@@ -6,7 +6,7 @@ using Candy.Guns.Projectiles;
 
 namespace Candy.Guns
 {
-    public class MissileLauncher : MonoBehaviour
+    public class MissileLauncher : BasicGun
     {
         [SerializeField] public GameObject m_shootPoint;
         [SerializeField] GameObject m_missile;
@@ -18,23 +18,21 @@ namespace Candy.Guns
         private Transform m_target;
         private List<GameObject> m_currentBullets = new List<GameObject>();
 
-        private void Start()
+        public Transform Target 
         {
-            StopShooting();
-
+            get { return m_target; }
+            set { m_target = value; }
         }
-        public void ShootGun(Transform target)
+
+         override public void ShootGun()
         {
-            m_target = target;
+           
 
             CreateBullet();
             m_isShooting = true;
         }
 
-        public void StopShooting()
-        {
-            m_isShooting = false;
-        }
+        
 
 
         private void CreateBullet()

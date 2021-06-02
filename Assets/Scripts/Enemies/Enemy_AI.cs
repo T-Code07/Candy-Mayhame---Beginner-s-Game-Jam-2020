@@ -12,7 +12,6 @@ public class Enemy_AI : MonoBehaviour
     [SerializeField] float m_GunRecoil = 10f;
     [SerializeField] float m_rotationSpeed = 3f;
     [SerializeField] MissileLauncher m_gun;
-  //  [SerializeField] GameObject
 
     private GameObject m_playerObject;
     private Rigidbody m_rigidBody;
@@ -62,7 +61,8 @@ public class Enemy_AI : MonoBehaviour
     {
         try
         {
-            m_gun.ShootGun(m_playerObject.transform);
+            m_gun.Target = m_playerObject.transform;
+            m_gun.ShootGun();
         }
         catch (MissingReferenceException)
         {
