@@ -9,6 +9,12 @@ namespace Candy.Guns
     /// </summary>
     public abstract class BasicGun : MonoBehaviour
     {
+        public Transform B_target;
+        private void Awake()
+        {
+            B_target = gameObject.transform;
+            print("This is from Base Gun: " + B_target.position);
+        }
         //placeholder
         public abstract void ShootGun();
 

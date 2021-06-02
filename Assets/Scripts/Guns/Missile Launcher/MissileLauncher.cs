@@ -27,11 +27,13 @@ namespace Candy.Guns
              set { m_target = value; }
          }
 
+
+
         override protected void ShootLauncher(Transform target)
         {
 
             m_target = target;
-            base.B_Target = m_target;
+            B_target = m_target;
             CreateBullet();
             m_isShooting = true;
         }

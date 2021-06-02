@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_rotationSpeed = 5f;
     [SerializeField] float m_jumpForce = 10f;
     [SerializeField] float m_sprintBoost = .2f;
-    [SerializeField] MissileLauncher m_gun;  
+    [SerializeField] BasicGun m_gun;  
     
     private bool m_isIdle = true;
     private bool m_isRunning = false;
@@ -73,9 +73,8 @@ public class PlayerController : MonoBehaviour
         //Shoot
         if (Input.GetButtonDown("Fire1"))
         {
-
             m_playerInvetory.UseCurrentlySelected();
-            m_animator.SetTrigger("Shoot");
+                m_animator.SetTrigger("Shoot");
 
             //Animation triggers shooting.
         }

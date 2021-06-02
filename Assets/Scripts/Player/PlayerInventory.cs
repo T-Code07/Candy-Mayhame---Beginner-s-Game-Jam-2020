@@ -42,7 +42,6 @@ namespace Candy.Inventory //namespace for background scripts for guns.
      
         void Start()
         {
-            if(m_gun)
              m_gun = m_gunArm.GetComponentInChildren<BasicGun>();
             InventoryList();
             m_currentSelectedNumber = 1;
@@ -58,41 +57,47 @@ namespace Candy.Inventory //namespace for background scripts for guns.
         
         public void UseCurrentlySelected() 
         {
-            Transform targetTransform;
-            bool raycastHasHit;
-          
+            
             m_currentSelectedItemTypes = m_inventoryMapWithTypes[m_currentSelectedNumber];
            if(m_currentSelectedItemTypes == PlayerInventoryTypes.WEAPON) 
             {
                 Debug.Log("Using Gun");
-                //  Ray ray = Physics.Raycast()
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                RaycastHit hit;
-                bool hasHit = Physics.Raycast(ray, out hit);
-                print(hit.transform.name);
-                try { transform.LookAt(hit.transform.position); } catch { }
-
-                if (hasHit)
-                {
-                    targetTransform = hit.transform;
-
-                    //player clicked himself.
-                    if (hit.transform.tag == "Player") return;
-
-                    if (hit.transform.tag == "Enemy")
-                    {
-                        raycastHasHit = true;
-                        Enemy_AI enemy = hit.transform.GetComponent<Enemy_AI>();
-                        targetTransform = enemy.transform;
-                    }
-                    else { raycastHasHit = false; }
-                }
-
+                RaycastToTarget();
+               
                 m_gun.ShootGun();
             }
         }
 
+        private void RaycastToTarget() 
+        {
+            Transform targetTransform;
+            bool raycastHasHit;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(ray, out hit);
+            print(hit.transform.name);
+            try { transform.LookAt(hit.transform.position); } catch { }
+
+            if (hasHit)
+            {
+                targetTransform = hit.transform;
+                print(targetTransform.position);
+                m_gun.B_target = targetTransform;
+                print("Gun target position: " + m_gun.B_target.position);
+                //player clicked himself.
+                if (hit.transform.tag == "Player") return;
+
+                if (hit.transform.tag == "Enemy")
+                {
+                    raycastHasHit = true;
+                    Enemy_AI enemy = hit.transform.GetComponent<Enemy_AI>();
+                    targetTransform = enemy.transform;
+                }
+                else { raycastHasHit = false; }
+            }
+        }
 
     }
 }
