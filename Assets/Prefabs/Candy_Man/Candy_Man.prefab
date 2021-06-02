@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: 1796762644}
   - component: {fileID: 1796762646}
   - component: {fileID: 1796762647}
+  - component: {fileID: 2143476727}
   - component: {fileID: 3816234785404468734}
   - component: {fileID: 7141316394559778291}
   - component: {fileID: 3849682794687030020}
+  - component: {fileID: 2143476731}
   m_Layer: 0
   m_Name: Candy_Man
   m_TagString: Player
@@ -112,7 +114,7 @@ MonoBehaviour:
   m_rotationSpeed: 5
   m_jumpForce: 10
   m_sprintBoost: 1
-  m_Gun: {fileID: 5795204417554481904}
+  m_gun: {fileID: 5795204417554481904}
 --- !u!114 &1796762647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,10 +127,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277e124e320e1584c8cc7627159066a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_pLayerIsDead: 0
   m_healthPoints: 100
-  m_deathFX: {fileID: 0}
-  m_isEnemy: 1
-  m_deathSX: {fileID: 0}
+  m_deathFX: {fileID: 6722560290934943070, guid: 84adff8de3a6dcb49a0133957e5c12ec,
+    type: 3}
+  m_isEnemy: 0
+  m_deathSX: {fileID: 8300000, guid: 13d2144e8be01664ab4c3a8aa60e6cca, type: 3}
+  m_UIManager: {fileID: 0}
+--- !u!114 &2143476727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039220557700025090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33766cb035cbe24198683e0b5faebd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_invetoryMaxCap: 3
+  m_gunArm: {fileID: 452650135902960058}
 --- !u!23 &3816234785404468734
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -182,6 +201,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4039220557700025090}
   m_CullTransparentMesh: 0
+--- !u!82 &2143476731
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039220557700025090}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &581594441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,11 +654,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 2161437234680563223, guid: 80346d86f137e654bbd94e6da3a200d4,
-        type: 3}
-      propertyPath: m_parentTransform
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6525298076792097458, guid: 80346d86f137e654bbd94e6da3a200d4,
         type: 3}
       propertyPath: m_Icon
@@ -648,6 +758,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2a496499ccb75c4689ee9ed091ce49f, type: 3}
+--- !u!1 &452650135902960058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6840439807268005026, guid: a2a496499ccb75c4689ee9ed091ce49f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6387860351897148696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5587278221536317479 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1526653022448602431, guid: a2a496499ccb75c4689ee9ed091ce49f,

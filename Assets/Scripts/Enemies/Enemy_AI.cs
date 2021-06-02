@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Candy.Guns;
 
+
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy_AI : MonoBehaviour
 {

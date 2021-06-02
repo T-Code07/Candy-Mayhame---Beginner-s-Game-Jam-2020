@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Candy.Guns;
+using Candy.Inventory;
+
 
 public class PlayerController : MonoBehaviour 
 {
@@ -9,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float m_rotationSpeed = 5f;
     [SerializeField] float m_jumpForce = 10f;
     [SerializeField] float m_sprintBoost = .2f;
-    [SerializeField] BasicGun m_gun;  
+    [SerializeField] MissileLauncher m_gun;  
     
     private bool m_isIdle = true;
     private bool m_isRunning = false;
@@ -20,12 +22,13 @@ public class PlayerController : MonoBehaviour
     private bool m_isJumping = false;
     private bool m_raycastHasHit = false;
     private Transform m_targetTransform;
-  
+    private PlayerInventory m_playerInvetory;
     
     void Start()
     {
         m_animator = GetComponent<Animator>();
         m_rigidBody = GetComponent<Rigidbody>();
+        m_playerInvetory = GetComponent<PlayerInventory>();
 
     }
 
@@ -70,31 +73,8 @@ public class PlayerController : MonoBehaviour
         //Shoot
         if (Input.GetButtonDown("Fire1"))
         {
-         
-            //  Ray ray = Physics.Raycast()
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            RaycastHit hit;
-            bool hasHit = Physics.Raycast( ray , out hit);
-
-            try { transform.LookAt(hit.transform.position); } catch { }
-
-            if (hasHit)
-            {
-                m_targetTransform = hit.transform;
-
-                //player clicked himself.
-                if (hit.transform.tag == "Player") return;
-
-                if (hit.transform.tag == "Enemy")
-                {
-                    m_raycastHasHit = true;
-                    Enemy_AI enemy = hit.transform.GetComponent<Enemy_AI>();
-                    m_targetTransform = enemy.transform;
-                }
-                else { m_raycastHasHit = false; }
-            }
-
+            m_playerInvetory.UseCurrentlySelected();
             m_animator.SetTrigger("Shoot");
 
             //Animation triggers shooting.
