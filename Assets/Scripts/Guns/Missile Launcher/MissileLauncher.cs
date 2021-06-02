@@ -6,28 +6,32 @@ using Candy.Guns.Projectiles;
 
 namespace Candy.Guns
 {
-    public class MissileLauncher : BasicGun
+    public class MissileLauncher : BasicLauncher
     {
         [SerializeField] public GameObject m_shootPoint;
         [SerializeField] GameObject m_missile;
         [SerializeField] float m_destroyBulletTime = 10f;
         [SerializeField] int m_maxCurrentBullets = 100;
         [SerializeField] AudioClip m_gunSFX;
+        [SerializeField] bool m_isPlayer = false;
 
         private bool m_isShooting = false;
         private Transform m_target;
         private List<GameObject> m_currentBullets = new List<GameObject>();
 
-        public Transform Target 
-        {
-            get { return m_target; }
-            set { m_target = value; }
-        }
+ 
 
-         override public void ShootGun()
-        {
-           
+         public Transform Target 
+         {
+             get { return m_target; }
+             set { m_target = value; }
+         }
 
+        override protected void ShootLauncher(Transform target)
+        {
+
+            m_target = target;
+            base.B_Target = m_target;
             CreateBullet();
             m_isShooting = true;
         }

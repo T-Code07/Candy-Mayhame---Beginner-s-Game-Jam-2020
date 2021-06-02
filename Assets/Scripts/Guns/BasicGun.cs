@@ -10,7 +10,6 @@ namespace Candy.Guns
     public abstract class BasicGun : MonoBehaviour
     {
         //placeholder
-
         public abstract void ShootGun();
 
 

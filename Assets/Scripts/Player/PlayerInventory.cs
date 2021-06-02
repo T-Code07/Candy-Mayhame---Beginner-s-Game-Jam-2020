@@ -42,6 +42,7 @@ namespace Candy.Inventory //namespace for background scripts for guns.
      
         void Start()
         {
+            if(m_gun)
              m_gun = m_gunArm.GetComponentInChildren<BasicGun>();
             InventoryList();
             m_currentSelectedNumber = 1;
