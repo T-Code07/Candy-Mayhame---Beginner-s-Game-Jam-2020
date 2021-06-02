@@ -44,19 +44,79 @@ namespace Candy.Inventory //namespace for background scripts for guns.
 
         void Start()
         {
-             m_gun = m_gunArm.GetComponentInChildren<BasicGun>();
-            InventoryList();
+           // addFirstWeapon();
             m_currentSelectedNumber = 1;
+            
+            foreach (BasicGun basicGun in m_gunArm.GetComponentsInChildren<BasicGun>()) 
+            {
+             
+                print(basicGun.name);
+                addNewItem(basicGun, PlayerInventoryTypes.WEAPON);
+          //      m_currentSelectedNumber = 1;
+            }
+             m_gun = m_gunArm.GetComponentInChildren<BasicGun>();
             m_animator = GetComponent<Animator>();
         }
 
-        private void InventoryList() 
+        private void Update()
         {
-            m_inventoryMapWithObjects.Add(1, m_gun);
-            m_inventoryMapWithTypes.Add(1, PlayerInventoryTypes.WEAPON);
+            if (Input.GetKeyDown("1")) 
+            {
+                
+                m_currentSelectedNumber = 1;
+                
+            }
+            else if (Input.GetKeyDown("2")) 
+            {
+                m_currentSelectedNumber = 2;
+            }
+            else if (Input.GetKeyDown("3"))
+            {
+                m_currentSelectedNumber = 3;
+            }
+            print("Current Number Selected: " + m_currentSelectedNumber);
+            try { m_currentSelectedItemTypes = m_inventoryMapWithTypes[m_currentSelectedNumber]; }
+            catch 
+            {
+                print("No item available");
+            }
+
+           for(int i = 0; i <= m_inventoryMaxCap; i++) 
+            {
+                object item = m_inventoryMapWithObjects[i];
+                //todo: figure out how to "use" these objects 
+            }
+        }
+
+        private void addFirstWeapon() 
+        {
+            addNewItem(m_gun, PlayerInventoryTypes.WEAPON);
+           // m_inventoryMapWithObjects.Add(1, m_gun);
+            //m_inventoryMapWithTypes.Add(1, PlayerInventoryTypes.WEAPON);
           
         }
-        
+
+        private void addNewItem(object item, PlayerInventoryTypes itemType) 
+        {
+            if (m_inventoryMapWithObjects.Count >= 3) return;
+
+            int nextOpenSlot;
+            if (m_inventoryMapWithObjects.Count == 0)
+            {
+                nextOpenSlot = 1;
+            }
+            else
+            {
+                nextOpenSlot = m_inventoryMapWithObjects.Count + 1;
+            }
+            
+            m_inventoryMapWithObjects.Add(nextOpenSlot, item);
+
+
+            m_inventoryMapWithTypes.Add(nextOpenSlot, itemType);
+
+        }
+
         public void UseCurrentlySelected() 
         {
             

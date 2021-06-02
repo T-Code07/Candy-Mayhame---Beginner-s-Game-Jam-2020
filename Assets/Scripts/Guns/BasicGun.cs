@@ -13,7 +13,6 @@ namespace Candy.Guns
         private void Awake()
         {
             B_target = gameObject.transform;
-            print("This is from Base Gun: " + B_target.position);
         }
         //placeholder
         public abstract void ShootGun();
