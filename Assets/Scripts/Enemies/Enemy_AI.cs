@@ -63,7 +63,7 @@ public class Enemy_AI : MonoBehaviour
         try
         {
             m_gun.B_target = m_playerObject.transform;
-            m_gun.ShootGun();
+            m_gun.ShootLauncher();
         }
         catch (MissingReferenceException)
         {

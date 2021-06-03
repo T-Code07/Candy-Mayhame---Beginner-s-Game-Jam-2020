@@ -9,7 +9,7 @@ namespace Candy.Guns
        
 
       
-        public override void ShootGun()
+        public override void ShootLauncher()
         {
             print("BasicLauncher: 'Shooting missiles'");
             ShootLauncher(B_target);

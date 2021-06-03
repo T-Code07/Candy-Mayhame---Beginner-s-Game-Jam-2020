@@ -8,6 +8,8 @@ namespace Candy.Guns
 {
     public class MissileLauncher : BasicLauncher
     {
+        //Maybe: have lists of different types of item? 
+        //       then incorprate them into where they are in 
         [SerializeField] public GameObject m_shootPoint;
         [SerializeField] GameObject m_missile;
         [SerializeField] float m_destroyBulletTime = 10f;

@@ -32,13 +32,13 @@ namespace Candy.Inventory //namespace for background scripts for guns.
     }
     public class PlayerInventory : MonoBehaviour
     {
-        public Dictionary<int, object> m_inventoryMapWithObjects = new Dictionary<int, object>(); //Will be organzied by number (keypad) to objects' scipts. EX: Hit key 1, flamethrower is selected
+        public Dictionary<int, GameObject> m_inventoryMapWithObjects = new Dictionary<int, GameObject>(); //Will be organzied by number (keypad) to objects' scipts. EX: Hit key 1, flamethrower is selected
         private Dictionary<int, PlayerInventoryTypes> m_inventoryMapWithTypes = new Dictionary<int, PlayerInventoryTypes>(); //Will be used to tell type of object.
         [SerializeField] int m_inventoryMaxCap = 3; //max invetory capacity
         private int m_currentSelectedNumber; //currently selected in invetory
         private PlayerInventoryTypes m_currentSelectedItemTypes;
-        [SerializeField] GameObject m_gunArm;
-        BasicGun m_gun;
+        [SerializeField] GameObject m_gunModel; //Under the gun model, all of the types of launching will be stored.
+        BasicGun m_currentlySelectedGun;
         private Animator m_animator;
 
 
@@ -47,14 +47,14 @@ namespace Candy.Inventory //namespace for background scripts for guns.
            // addFirstWeapon();
             m_currentSelectedNumber = 1;
             
-            foreach (BasicGun basicGun in m_gunArm.GetComponentsInChildren<BasicGun>()) 
+            foreach (BasicGun basicGun in m_gunModel.GetComponentsInChildren<BasicGun>()) 
             {
              
                 print(basicGun.name);
-                addNewItem(basicGun, PlayerInventoryTypes.WEAPON);
+                addNewItem(basicGun.gameObject, PlayerInventoryTypes.WEAPON);
           //      m_currentSelectedNumber = 1;
             }
-             m_gun = m_gunArm.GetComponentInChildren<BasicGun>();
+          
             m_animator = GetComponent<Animator>();
         }
 
@@ -81,22 +81,35 @@ namespace Candy.Inventory //namespace for background scripts for guns.
                 print("No item available");
             }
 
-           for(int i = 0; i <= m_inventoryMaxCap; i++) 
+           for(int i = 1; i <= 4; i++) 
             {
-                object item = m_inventoryMapWithObjects[i];
-                //todo: figure out how to "use" these objects 
+                print(i);
+                //return if this number is selected
+                if (i == m_currentSelectedNumber)
+                {
+                    //Make sure currently in use item is active. 
+                    m_inventoryMapWithObjects[i].SetActive(true);
+                }
+                else
+                {
+                    //Disable all items that aren't selected. 
+                    m_inventoryMapWithObjects[i].SetActive(false);
+                }
+
             }
+
+          
         }
 
         private void addFirstWeapon() 
         {
-            addNewItem(m_gun, PlayerInventoryTypes.WEAPON);
+            addNewItem(m_currentlySelectedGun.gameObject, PlayerInventoryTypes.WEAPON);
            // m_inventoryMapWithObjects.Add(1, m_gun);
             //m_inventoryMapWithTypes.Add(1, PlayerInventoryTypes.WEAPON);
           
         }
 
-        private void addNewItem(object item, PlayerInventoryTypes itemType) 
+        private void addNewItem(GameObject item, PlayerInventoryTypes itemType) 
         {
             if (m_inventoryMapWithObjects.Count >= 3) return;
 
@@ -138,7 +151,7 @@ namespace Candy.Inventory //namespace for background scripts for guns.
         public void CallGunShootingMethod()
         {
           
-            m_gun.ShootGun();
+            m_currentlySelectedGun.ShootLauncher();
         }
 
         private void RaycastToTarget() 
@@ -157,8 +170,8 @@ namespace Candy.Inventory //namespace for background scripts for guns.
             {
                 targetTransform = hit.transform;
                 print(targetTransform.position);
-                m_gun.B_target = targetTransform;
-                print("Gun target position: " + m_gun.B_target.position);
+                m_currentlySelectedGun.B_target = targetTransform;
+                print("Gun target position: " + m_currentlySelectedGun.B_target.position);
                 //player clicked himself.
                 if (hit.transform.tag == "Player") return;
 

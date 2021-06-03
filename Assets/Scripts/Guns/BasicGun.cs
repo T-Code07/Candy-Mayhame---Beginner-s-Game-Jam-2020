@@ -15,7 +15,7 @@ namespace Candy.Guns
             B_target = gameObject.transform;
         }
         //placeholder
-        public abstract void ShootGun();
+        public abstract void ShootLauncher();
 
 
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Candy.Guns
 {
-    public class GrenadeLauncher : BasicGun
+    public class GrenadeLauncher : BasicLauncher
     {
         [SerializeField] GameObject m_grenade;
         [SerializeField] float m_grenadeLaunchSpeedY = 15.0f;
@@ -12,7 +12,6 @@ namespace Candy.Guns
         [SerializeField] Transform m_grenadeLaunchPoint; 
         void Start()
         {
-            ShootGun();
         }
 
         
@@ -21,8 +20,9 @@ namespace Candy.Guns
 
         }
 
-        public override void ShootGun() 
+        protected override void ShootLauncher(Transform target) 
         {
+            
             GameObject grenade = Instantiate(m_grenade, m_grenadeLaunchPoint.position, Quaternion.identity);
 
             Rigidbody grenadeRigidbody = grenade.GetComponent<Rigidbody>();
