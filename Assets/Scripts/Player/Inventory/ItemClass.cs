@@ -6,7 +6,8 @@ namespace Candy.Inventory
 {
     public class ItemClass : MonoBehaviour
     {
-        // Start is called before the first frame update
+        private PlayerInventoryTypes m_typeOfItem;
+        private 
         void Start()
         {
 

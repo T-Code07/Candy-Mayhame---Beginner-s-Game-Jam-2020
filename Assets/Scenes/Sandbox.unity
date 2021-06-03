@@ -417,24 +417,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 884926524}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &527466929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527466928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a939049f7040556468a6494c92e571a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  B_target: {fileID: 0}
-  m_grenade: {fileID: 3236761613580824174, guid: 083f6669f2a039449a806714cbd12c5a,
+--- !u!4 &527466929 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9109181675647849394, guid: 9bbf217b038dd564ab8fff098fcfa571,
     type: 3}
-  m_grenadeLaunchSpeedY: 15
-  m_grenadeLaunchSpeedForward: 15
-  m_grenadeLaunchPoint: {fileID: 548865633}
+  m_PrefabInstance: {fileID: 884926524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &548865633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1344323164523694142, guid: 9bbf217b038dd564ab8fff098fcfa571,
@@ -653,7 +641,12 @@ PrefabInstance:
       propertyPath: m_UIManager
       value: 
       objectReference: {fileID: 1385120129}
-    m_RemovedComponents: []
+    - target: {fileID: 2143476727, guid: 9bbf217b038dd564ab8fff098fcfa571, type: 3}
+      propertyPath: m_gunModel
+      value: 
+      objectReference: {fileID: 527466928}
+    m_RemovedComponents:
+    - {fileID: 5795204417554481904, guid: 9bbf217b038dd564ab8fff098fcfa571, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9bbf217b038dd564ab8fff098fcfa571, type: 3}
 --- !u!224 &884926525 stripped
 RectTransform:
@@ -822,6 +815,12 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &1054544113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1665417100477828693, guid: 9bbf217b038dd564ab8fff098fcfa571,
+    type: 3}
+  m_PrefabInstance: {fileID: 884926524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1123399262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,6 +1101,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1358316789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358316790}
+  - component: {fileID: 1358316791}
+  m_Layer: 0
+  m_Name: Missile Launcher Script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1358316790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358316789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527466929}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1358316791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358316789}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e88969e17370964e833e12e46d449fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  B_target: {fileID: 0}
+  m_shootPoint: {fileID: 1054544113}
+  m_missile: {fileID: 2978847042727573164, guid: 513db1d414fb75f47859cf77fc996f8d,
+    type: 3}
+  m_destroyBulletTime: 10
+  m_maxCurrentBullets: 1000
+  m_gunSFX: {fileID: 8300000, guid: 582fb9d1eb2e27547a5b1718419b6de5, type: 3}
+  m_isPlayer: 0
 --- !u!114 &1385120129 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5784018775279693933, guid: 163b6c92ec53deb4da8e77e87a9f503f,
@@ -1205,3 +1255,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2107862502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107862503}
+  - component: {fileID: 2107862504}
+  m_Layer: 0
+  m_Name: Grenade Launcher Script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2107862503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107862502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527466929}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2107862504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107862502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a939049f7040556468a6494c92e571a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  B_target: {fileID: 0}
+  m_grenade: {fileID: 3236761613580824174, guid: 083f6669f2a039449a806714cbd12c5a,
+    type: 3}
+  m_grenadeLaunchSpeedY: 15
+  m_grenadeLaunchSpeedForward: 15
+  m_grenadeLaunchPoint: {fileID: 548865633}
